@@ -1,0 +1,10 @@
+packages:
+  - server
+  - web
+
+onlyBuiltDependencies:
+  - esbuild
+
+# Our lockfile is freshly resolved + pinned; don't reject just-published
+# transitive deps (electron-to-chromium / node-releases) on install.
+minimumReleaseAge: 0

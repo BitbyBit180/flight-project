@@ -1,0 +1,62 @@
+:root {
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+.display-body {
+  cursor: none; /* hidden on the projector; unclutter also runs on the Pi */
+}
+.display-root {
+  position: fixed;
+  inset: 0;
+  background: #000;
+}
+.display-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hud {
+  position: fixed;
+  top: 10px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 12px/1.2 "JetBrains Mono", ui-monospace, monospace;
+  color: #c9cdd6;
+  background: rgba(10, 12, 16, 0.6);
+  padding: 6px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+.hud-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.hud-dot.ok {
+  background: #4ade80;
+}
+.hud-dot.bad {
+  background: #e0533d;
+}
+.reconnect {
+  position: fixed;
+  bottom: 14px;
+  right: 16px;
+  font: 12px "JetBrains Mono", ui-monospace, monospace;
+  color: #6b7280;
+}

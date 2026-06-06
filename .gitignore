@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+
+# runtime state (persisted config, route + TLE caches)
+server/data/
+data/
+
+# editor / OS
+.DS_Store
+.env
+.env.local
+.idea/
+.vscode/

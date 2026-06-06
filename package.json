@@ -1,0 +1,24 @@
+{
+  "name": "skylight",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skylight — project the aircraft passing overhead onto your ceiling, in real time, from an RTL-SDR.",
+  "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "dev": "concurrently -n server,web -c green,cyan \"pnpm dev:server\" \"pnpm dev:web\"",
+    "dev:server": "pnpm -F server dev",
+    "dev:web": "pnpm -F web dev",
+    "build": "pnpm -F web build",
+    "start": "pnpm -F server start",
+    "typecheck": "tsc -p shared/tsconfig.json && pnpm -F server typecheck && pnpm -F web typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "playwright": "^1.60.0",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
