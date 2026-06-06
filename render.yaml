@@ -1,0 +1,34 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+#
+# One-click deploy: render.com → New → Blueprint → point at this repo.
+# Free Web Service plan supports WebSockets and long-running Node processes.
+# Note: free plan has EPHEMERAL DISK — server/data/config.json resets on
+# every restart. Re-set your location in the control panel after a cold
+# start, or upgrade to a paid plan with a persistent disk.
+
+services:
+  - type: web
+    name: skylight
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: |
+      corepack enable
+      pnpm install --frozen-lockfile
+      pnpm -F web build
+    startCommand: pnpm -F server start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_SOURCE
+        value: api
+      - key: SUPPLEMENT_API
+        value: "1"
+      - key: POLL_MS
+        value: "1000"
+      - key: API_POLL_MS
+        value: "4000"
+      # Render sets PORT automatically; HOST stays 0.0.0.0 (default in code).
