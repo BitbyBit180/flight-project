@@ -14,8 +14,7 @@ services:
     region: oregon
     branch: main
     buildCommand: |
-      corepack enable
-      pnpm install --frozen-lockfile
+      pnpm install --no-frozen-lockfile
       pnpm -F web build
     startCommand: pnpm -F server start
     healthCheckPath: /api/health
